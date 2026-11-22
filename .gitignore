@@ -2,12 +2,19 @@
 .venv/
 venv/
 
-# Environment variables and passwords
+# Environment variables and secrets
 .env
 
-# Python cache files
+# Python cache
 __pycache__/
 *.pyc
 
-# VS Code settings
+# VS Code
 .vscode/
+
+# Backup files
+backups/
+*.bak
+
+# Generated restoration files
+restored_sensor_readings.csv

@@ -1,105 +1,205 @@
-Secure IoT Data Backup Using Python and Supabase
+# Secure IoT Data Backup and Restoration System
 
-Project Overview
+## Project Overview
 
-Secure IoT Data Backup is a cloud-based project developed using Python and Supabase. The project focuses on collecting IoT sensor data, securely uploading data to cloud storage, creating backups, and restoring stored data when required.
+The Secure IoT Data Backup and Restoration System is a Python-based project designed to securely store, back up, and restore IoT sensor data using Supabase Cloud Storage.
 
-Objectives
+The system collects IoT sensor readings, stores them in CSV format, uploads backup files to Supabase, and restores the data whenever required. It also verifies data integrity using SHA-256 hashing to ensure that the restored file is identical to the original file.
 
-- Collect IoT sensor data using Python.
-- Upload data to Supabase cloud storage.
-- Maintain secure data backups.
-- Restore backed-up data when required.
-- Demonstrate cloud computing and data management.
+## Objectives
 
-Technologies Used
+- Collect IoT sensor data.
+- Store sensor readings in CSV format.
+- Create secure backups of sensor data.
+- Upload backup files to Supabase Cloud Storage.
+- Restore backup files from cloud storage.
+- Verify restored data using SHA-256 hashing.
+- Maintain data integrity and availability.
 
-- Programming Language: Python
-- Cloud Platform: Supabase
-- Database / Storage: Supabase
-- Libraries: Supabase Python SDK, Python-dotenv
-- Development Environment: Visual Studio Code
-- Version Control: Git and GitHub
+## Technologies Used
 
-Project Structure
+- Python
+- Supabase
+- Supabase Storage
+- CSV
+- SHA-256 Hashing
+- Visual Studio Code
+- Git and GitHub
+- Python Virtual Environment
 
+## Project Structure
+
+```text
 Secure_IOT_Data_Backup/
 │
-├── backup_data.py
+├── backups/
+│   └── sensor_backup_*.csv
+│
 ├── iot_sensor.py
+├── backup_data.py
 ├── upload_data.py
 ├── restore_data.py
+├── verify_backup.py
+│
+├── sensor_readings.csv
+├── restored_sensor_readings.csv
 ├── requirements.txt
-├── .gitignore
-└── .env
+├── README.md
+└── .gitignore
+```
 
-Note: The ".env" file is stored locally and must never be uploaded to GitHub.
+## Project Modules
 
-Main Features
+### 1. IoT Sensor Data Generation
 
-1. IoT Sensor Data Collection: Collects sensor data using Python.
-2. Data Backup: Creates backups of collected IoT data.
-3. Cloud Upload: Uploads backup data to Supabase.
-4. Data Restoration: Retrieves previously backed-up data.
-5. Secure Configuration: Uses environment variables to protect credentials.
+File: `iot_sensor.py`
 
-Installation and Setup
+Generates sample IoT sensor readings, including:
+- Device ID
+- Temperature
+- Humidity
+- Location
+- Timestamp
 
-1. Clone the Repository
+### 2. Data Backup
 
+File: `backup_data.py`
+
+Creates backup copies of sensor readings and stores them locally in CSV format.
+
+### 3. Cloud Upload
+
+File: `upload_data.py`
+
+Connects to Supabase and uploads the sensor backup file to the cloud storage bucket.
+
+### 4. Data Restoration
+
+File: `restore_data.py`
+
+Downloads the backup file from Supabase Storage and saves it locally as:
+
+`restored_sensor_readings.csv`
+
+### 5. Backup Integrity Verification
+
+File: `verify_backup.py`
+
+Uses SHA-256 hashing to compare the original and restored files.
+
+If both hash values match, the system confirms that the restored data is identical to the original data.
+
+## Supabase Configuration
+
+The project uses Supabase Storage for cloud backup.
+
+Storage Bucket:
+
+`iot-backup-storage`
+
+Environment variables are stored in a local `.env` file.
+
+Example configuration:
+
+```env
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_KEY=your_supabase_secret_key
+```
+
+**Security Note:** Never upload your actual `.env` file or secret keys to GitHub.
+
+## Installation and Setup
+
+### Step 1: Clone the Repository
+
+```bash
 git clone https://github.com/varshagowda2/Secure-IOT-Data-Backup.git
+```
 
-2. Open the Project Folder
+### Step 2: Open the Project Folder
 
+```bash
 cd Secure-IOT-Data-Backup
+```
 
-3. Create a Virtual Environment
+### Step 3: Create Virtual Environment
 
+```bash
 python -m venv .venv
+```
 
-4. Activate the Virtual Environment
+### Step 4: Activate Virtual Environment
 
-For Windows:
+For Windows PowerShell:
 
-.venv\Scripts\activate
+```powershell
+.venv\Scripts\Activate.ps1
+```
 
-5. Install Dependencies
+### Step 5: Install Dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
-6. Configure Environment Variables
+### Step 6: Configure Environment Variables
 
-Create a local ".env" file and add your Supabase configuration:
+Create a `.env` file in the project folder and add your Supabase credentials.
 
-SUPABASE_URL=YOUR_PROJECT_URL
-SUPABASE_KEY=YOUR_PUBLISHABLE_KEY
-SUPABASE_EMAIL=YOUR_REGISTERED_EMAIL
-SUPABASE_PASSWORD=YOUR_PASSWORD
+### Step 7: Run the Project
 
-Never share or upload actual credentials.
+Run the Python files in the following order:
 
-Running the Project
-
-Run the Python scripts from the project folder according to their functionality:
-
+```bash
 python iot_sensor.py
-
 python backup_data.py
-
 python upload_data.py
-
 python restore_data.py
+python verify_backup.py
+```
 
-Expected Outcome
+## Data Integrity Verification
 
-The project demonstrates how IoT sensor data can be collected, backed up, uploaded to a cloud platform, and restored when needed.
+The system uses the SHA-256 algorithm to verify backup integrity.
 
-Conclusion
+Example successful output:
 
-Secure IoT Data Backup provides a practical demonstration of integrating Python with Supabase cloud services. It helps understand IoT data management, cloud storage, backup mechanisms, and data restoration.
+```text
+BACKUP INTEGRITY VERIFICATION
 
-Author
+Original file: sensor_readings.csv
+Restored file: restored_sensor_readings.csv
 
-Varshini M
+Original SHA-256: [hash value]
+Restored SHA-256: [hash value]
 
-Project: Secure IoT Data Backup Using Python and Supabase
+SUCCESS: Data integrity verified!
+Original and restored files are identical.
+```
+
+## Project Result
+
+The system successfully connects to Supabase, uploads IoT sensor backup data, downloads the stored backup, and restores the CSV file.
+
+SHA-256 verification confirms that the original and restored files have identical hash values.
+
+## Advantages
+
+- Secure cloud-based data backup.
+- Easy data restoration.
+- Data integrity verification.
+- Reduced risk of data loss.
+- Organized storage of IoT sensor readings.
+- Simple and efficient implementation.
+
+## Conclusion
+
+The Secure IoT Data Backup and Restoration System provides an efficient solution for backing up and restoring IoT sensor data using Python and Supabase Cloud Storage.
+
+The SHA-256 verification mechanism ensures data integrity and confirms that the restored data matches the original data.
+
+## Author
+
+**Varshini M**
+
+Project: Secure IoT Data Backup and Restoration System
