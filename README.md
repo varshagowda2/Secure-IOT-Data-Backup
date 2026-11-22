@@ -203,3 +203,25 @@ The SHA-256 verification mechanism ensures data integrity and confirms that the 
 **Varshini M**
 
 Project: Secure IoT Data Backup and Restoration System
+## Project Screenshots
+
+### 1. IoT Sensor Simulation
+![IoT Sensor Simulation](screenshots/01_sensor_simulation.png)
+
+### 2. Local Data Backup
+![Local Backup](screenshots/02_backup_success.png)
+
+### 3. Supabase Cloud Upload
+![Supabase Upload](screenshots/03_supabase_upload.png)
+
+### 4. Data Restoration
+![Data Restoration](screenshots/04_data_restoration.png)
+
+### 5. SHA-256 Integrity Verification
+![Integrity Verification](screenshots/05_integrity_verification.png)
+
+### 6. Supabase Storage
+![Supabase Storage](screenshots/06_supabase_storage.png)
+
+### 7. GitHub Repository
+![GitHub Repository](screenshots/07_github_repository.png)
